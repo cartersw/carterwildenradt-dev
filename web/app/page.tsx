@@ -75,8 +75,8 @@ export default function Home() {
         className={`collapsible w-full max-w-6xl ${open ? "collapsible-open" : ""}`}
         style={{ height: open ? contentHeight : 0 }}
       >
-        {/* Spacing lives inside the measured box so it counts toward height. */}
-        <div ref={contentRef} className="pt-6">
+        {/* Measured spacing leaves room for the shadow inside the clipped panel. */}
+        <div ref={contentRef} className="px-4 pt-12 pb-6">
           {session && (
             <Terminal key={session.runId} commands={session.commands} />
           )}

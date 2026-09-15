@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 body {
-  background: #000000;
-  color: #ffffff;
+  background: #ffffff;
+  color: #000000;
   font-family: Consolas, "Courier New", monospace;
 }
 
