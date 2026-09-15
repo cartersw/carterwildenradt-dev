@@ -15,7 +15,7 @@ const SECTION_CONTENT: Record<Section, TerminalLine[]> = {
       text: "I enjoy building web apps and video games in my free time. I particularly enjoy designing backend architecture.",
     },
     {
-      text: "Outside of development, I enjoy skateboarding, collecting Counter-Strike skins, and investing.",
+      text: "Outside of development, I enjoy skateboarding, collecting Counter-Strike skins, and traveling.",
     },
   ],
   projects: [
