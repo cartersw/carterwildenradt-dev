@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { SectionNav } from "./components/SectionNav";
 import { Terminal } from "./components/Terminal";
@@ -55,7 +56,18 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-4">
+    <main className="flex min-h-screen flex-col items-center justify-center px-4 py-12">
+      <div className="relative mb-8 size-40 shrink-0 overflow-hidden rounded-full ring-1 ring-black/10 md:size-48">
+        <Image
+          src="/portrait.jpg"
+          alt="Carter Wildenradt"
+          fill
+          sizes="(min-width: 768px) 288px, 240px"
+          loading="eager"
+          className="scale-150 object-cover object-[50%_65%]"
+        />
+      </div>
+
       <h1 className="text-2xl md:text-3xl" aria-label={NAME}>
         {heading}
       </h1>
