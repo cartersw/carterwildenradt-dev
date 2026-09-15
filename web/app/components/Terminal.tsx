@@ -11,7 +11,7 @@ export function Terminal({ commands }: TerminalProps) {
   const { completed, directory, typed } = useTerminalScript(commands);
 
   return (
-    <div className="whitespace-pre-wrap border border-neutral-700 bg-neutral-950 px-4 py-3 text-left text-sm md:text-base">
+    <div className="whitespace-pre-wrap wrap-anywhere border border-neutral-700 bg-neutral-950 px-4 py-3 text-left text-sm md:px-6 md:py-4 md:text-lg">
       {completed.map((command, index) => (
         <div key={index}>
           <Prompt directory={command.directory} />

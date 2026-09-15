@@ -16,7 +16,7 @@ export function SectionNav({
   className = "",
 }: SectionNavProps) {
   return (
-    <nav className={`flex gap-12 ${className}`}>
+    <nav className={`flex flex-wrap justify-center gap-x-6 gap-y-3 sm:gap-x-12 md:gap-x-16 md:text-lg ${className}`}>
       {SECTIONS.map((section) => (
         <button
           key={section}

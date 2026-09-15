@@ -56,7 +56,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center px-4">
-      <h1 className="text-xl md:text-2xl" aria-label={NAME}>
+      <h1 className="text-2xl md:text-3xl" aria-label={NAME}>
         {heading}
       </h1>
 
@@ -72,7 +72,7 @@ export default function Home() {
       <div
         id={PANEL_ID}
         aria-hidden={!open}
-        className={`collapsible w-full max-w-4xl ${open ? "collapsible-open" : ""}`}
+        className={`collapsible w-full max-w-6xl ${open ? "collapsible-open" : ""}`}
         style={{ height: open ? contentHeight : 0 }}
       >
         {/* Spacing lives inside the measured box so it counts toward height. */}
