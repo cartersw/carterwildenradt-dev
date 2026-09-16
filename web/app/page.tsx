@@ -57,7 +57,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center px-4 py-12">
-      <div className="relative mb-8 size-48 shrink-0 overflow-hidden rounded-full ring-1 ring-black/10 md:size-56">
+      <div className="relative mb-12 size-48 shrink-0 overflow-hidden rounded-full ring-1 ring-black/10 md:size-56">
         <Image
           src="/portrait.jpg"
           alt="Carter Wildenradt"
