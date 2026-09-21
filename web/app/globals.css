@@ -113,12 +113,8 @@ body {
 }
 
 .section-content-projects .section-entry {
-  padding-top: 0.875rem;
-  border-top: 1px solid var(--border);
-}
-
-.section-content-projects .section-entry:nth-child(-n + 2) {
-  border-top-color: transparent;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid var(--border);
 }
 
 .entry-detail {
