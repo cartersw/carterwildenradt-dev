@@ -1,34 +1,68 @@
 "use client";
 
+import { useRef, type KeyboardEvent } from "react";
 import { SECTIONS, type Section } from "../content/sections";
 
 type SectionNavProps = {
-  activeSection: Section | null;
-  panelId: string;
+  activeSection: Section;
   onSelect: (section: Section) => void;
-  className?: string;
 };
 
 export function SectionNav({
   activeSection,
-  panelId,
   onSelect,
-  className = "",
 }: SectionNavProps) {
+  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const handleKeyDown = (
+    event: KeyboardEvent<HTMLButtonElement>,
+    index: number
+  ) => {
+    let nextIndex: number;
+
+    switch (event.key) {
+      case "ArrowRight":
+        nextIndex = (index + 1) % SECTIONS.length;
+        break;
+      case "ArrowLeft":
+        nextIndex = (index - 1 + SECTIONS.length) % SECTIONS.length;
+        break;
+      case "Home":
+        nextIndex = 0;
+        break;
+      case "End":
+        nextIndex = SECTIONS.length - 1;
+        break;
+      default:
+        return;
+    }
+
+    event.preventDefault();
+    onSelect(SECTIONS[nextIndex]);
+    tabs.current[nextIndex]?.focus();
+  };
+
   return (
-    <nav className={`flex flex-wrap justify-center gap-x-6 gap-y-3 sm:gap-x-12 md:gap-x-16 md:text-lg ${className}`}>
-      {SECTIONS.map((section) => (
+    <div role="tablist" aria-label="Portfolio" className="section-tabs">
+      {SECTIONS.map((section, index) => (
         <button
           key={section}
+          ref={(element) => {
+            tabs.current[index] = element;
+          }}
+          id={`tab-${section}`}
           type="button"
-          aria-controls={panelId}
-          aria-expanded={activeSection === section}
+          role="tab"
+          aria-controls={`panel-${section}`}
+          aria-selected={activeSection === section}
+          tabIndex={activeSection === section ? 0 : -1}
           onClick={() => onSelect(section)}
-          className="cursor-pointer transition-opacity hover:opacity-70"
+          onKeyDown={(event) => handleKeyDown(event, index)}
+          className="section-tab"
         >
           [{section}]
         </button>
       ))}
-    </nav>
+    </div>
   );
 }

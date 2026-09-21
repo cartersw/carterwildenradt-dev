@@ -1,11 +1,17 @@
-import { HOME_DIRECTORY } from "../constants/site";
-import type { TerminalCommand, TerminalLine } from "../lib/terminal";
-
 export const SECTIONS = ["about", "projects", "contact"] as const;
 
 export type Section = (typeof SECTIONS)[number];
 
-const SECTION_CONTENT: Record<Section, TerminalLine[]> = {
+export type SectionEntry = {
+  label: string;
+  detail?: string;
+  href?: string;
+  link?: "label" | "detail";
+};
+
+type SectionLine = { text: string } | SectionEntry;
+
+export const SECTION_CONTENT: Record<Section, SectionLine[]> = {
   about: [
     { text: "Hello my name is Carter, I am a full-stack software developer." },
     {
@@ -62,27 +68,3 @@ const SECTION_CONTENT: Record<Section, TerminalLine[]> = {
     },
   ],
 };
-
-const directoryFor = (section: Section) => `${HOME_DIRECTORY}\\${section}`;
-
-
-export function sectionScript(
-  section: Section,
-  from?: Section | null
-): TerminalCommand[] {
-  const enter: TerminalCommand[] = from
-    ? [
-        { directory: directoryFor(from), input: "cls", clears: true },
-        { directory: directoryFor(from), input: `cd ..\\${section}` },
-      ]
-    : [{ directory: HOME_DIRECTORY, input: `cd ${section}` }];
-
-  return [
-    ...enter,
-    {
-      directory: directoryFor(section),
-      input: `type ${section}.txt`,
-      output: SECTION_CONTENT[section],
-    },
-  ];
-}

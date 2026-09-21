@@ -3,97 +3,53 @@
 import Image from "next/image";
 import { useState } from "react";
 import { SectionNav } from "./components/SectionNav";
-import { Terminal } from "./components/Terminal";
-import { NAME, NAME_MASK } from "./constants/site";
-import { sectionScript, type Section } from "./content/sections";
-import { useDecodeText } from "./hooks/useDecodeText";
-import { useElementHeight } from "./hooks/useElementHeight";
-import type { TerminalCommand } from "./lib/terminal";
-
-const PANEL_ID = "terminal-panel";
-
-type Session = {
-  runId: number;
-  section: Section;
-  commands: TerminalCommand[];
-};
+import { SectionContent } from "./components/SectionContent";
+import { NAME } from "./constants/site";
+import { SECTIONS, type Section } from "./content/sections";
 
 export default function Home() {
-  const { value: heading, finished: decoded } = useDecodeText(NAME, NAME_MASK);
-
-  // The session outlives the panel closing so it can animate out. Switching
-  // sections while open appends to the same transcript; reopening from closed
-  // bumps runId, which remounts the terminal and replays it from the top.
-  const [session, setSession] = useState<Session | null>(null);
-  const [open, setOpen] = useState(false);
-  const { ref: contentRef, height: contentHeight } =
-    useElementHeight<HTMLDivElement>();
-
-  const handleSelect = (section: Section) => {
-    if (open && session?.section === section) {
-      setOpen(false);
-      return;
-    }
-
-    setSession(
-      open && session
-        ? {
-            runId: session.runId,
-            section,
-            commands: [
-              ...session.commands,
-              ...sectionScript(section, session.section),
-            ],
-          }
-        : {
-            runId: (session?.runId ?? 0) + 1,
-            section,
-            commands: sectionScript(section),
-          }
-    );
-
-    setOpen(true);
-  };
+  const [activeSection, setActiveSection] = useState<Section>("about");
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-4 py-12">
-      <div className="relative mb-12 size-48 shrink-0 overflow-hidden rounded-full ring-1 ring-black/10 md:size-56">
-        <Image
-          src="/portrait.jpg"
-          alt="Carter Wildenradt"
-          fill
-          sizes="(min-width: 768px) 336px, 288px"
-          loading="eager"
-          className="scale-150 object-cover object-[50%_65%]"
-        />
-      </div>
-
-      <h1 className="text-2xl md:text-3xl" aria-label={NAME}>
-        {heading}
-      </h1>
-
-      {decoded && (
-        <SectionNav
-          className="fade-in mt-12"
-          activeSection={open && session ? session.section : null}
-          panelId={PANEL_ID}
-          onSelect={handleSelect}
-        />
-      )}
-
-      <div
-        id={PANEL_ID}
-        aria-hidden={!open}
-        className={`collapsible w-full max-w-6xl ${open ? "collapsible-open" : ""}`}
-        style={{ height: open ? contentHeight : 0 }}
-      >
-        {/* Measured spacing leaves room for the shadow inside the clipped panel. */}
-        <div ref={contentRef} className="px-4 pt-12 pb-6">
-          {session && (
-            <Terminal key={session.runId} commands={session.commands} />
-          )}
+    <main className="portfolio">
+      <header className="profile">
+        <div className="portrait-frame">
+          <div className="portrait-image">
+            <Image
+              src="/portrait.jpg"
+              alt="Carter Wildenradt"
+              fill
+              sizes="(min-width: 768px) 318px, 270px"
+              loading="eager"
+              className="scale-150 object-cover object-[50%_65%]"
+            />
+          </div>
         </div>
-      </div>
+        <h1 className="text-2xl md:text-3xl">{NAME}</h1>
+      </header>
+
+      <section className="section-view">
+        <SectionNav
+          activeSection={activeSection}
+          onSelect={setActiveSection}
+        />
+        <div className="section-panels">
+          {SECTIONS.map((section) => (
+            <div
+              key={section}
+              id={`panel-${section}`}
+              role="tabpanel"
+              aria-labelledby={`tab-${section}`}
+              aria-hidden={activeSection !== section}
+              inert={activeSection !== section}
+              tabIndex={activeSection === section ? 0 : -1}
+              className="section-panel"
+            >
+              <SectionContent section={section} />
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

@@ -1,6 +1,5 @@
 # [carterwildenradt.dev](https://carterwildenradt.dev)
 
-Personal portfolio. A terminal-styled landing page built with Next.js, TypeScript, and Tailwind CSS.
 
 ## Getting started
 
