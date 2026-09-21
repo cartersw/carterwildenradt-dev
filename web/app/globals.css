@@ -81,6 +81,7 @@ body {
   grid-area: 1 / 1;
   min-width: 0;
   padding-top: 2rem;
+  color: #000000;
   line-height: 1.75;
   overflow-wrap: anywhere;
 }
@@ -121,7 +122,6 @@ body {
 }
 
 .entry-detail {
-  color: var(--muted);
   font-size: 0.8125rem;
 }
 
@@ -137,10 +137,6 @@ body {
   grid-template-columns: 6rem minmax(0, 1fr);
   align-items: baseline;
   gap: 1.5rem;
-}
-
-.entry-label {
-  color: var(--muted);
 }
 
 .section-entry a {
