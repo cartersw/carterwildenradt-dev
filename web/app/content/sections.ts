@@ -21,7 +21,7 @@ export const SECTION_CONTENT: Record<Section, SectionLine[]> = {
       text: "I enjoy building web apps, video games, and machine-learning projects in my free time. I particularly enjoy designing backend systems and APIs",
     },
     {
-      text: "Outside of development, I enjoy traveling, skateboarding, and hiking. ",
+      text: "Outside of development, I enjoy traveling, longboarding, and hiking. ",
     },
   ],
   projects: [
