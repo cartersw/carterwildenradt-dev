@@ -34,8 +34,7 @@ body {
 .portrait-frame {
   width: 12rem;
   height: 12rem;
-  padding: 5px;
-  border: 1px solid var(--foreground);
+  border: 2px solid #000000;
   border-radius: 50%;
 }
 
