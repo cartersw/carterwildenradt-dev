@@ -15,7 +15,7 @@ export const SECTION_CONTENT: Record<Section, SectionLine[]> = {
   about: [
     { text: "Hello my name is Carter, I am a full-stack software developer." },
     {
-      text: "I currently work at StarPlus Energy, a joint venture by Samsung SDI and Stellantis. I'm responsible for analyzing, debugging, and assisting with deploying changes for their MES application.",
+      text: "I currently work at a joint venture by Samsung SDI and Stellantis called StarPlus Energy. I'm responsible for analyzing, debugging, and assisting with deploying changes for their MES application.",
     },
     {
       text: "I enjoy building web apps, video games, and machine-learning projects in my free time. I particularly enjoy designing backend systems and APIs",
