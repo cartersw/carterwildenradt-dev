@@ -186,6 +186,7 @@ body {
   }
 
   .section-panel {
+    align-items: flex-start;
     padding-top: 1.5rem;
     font-size: 0.875rem;
   }

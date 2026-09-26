@@ -20,8 +20,8 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inconsolata.className}>{children}</body>
+    <html lang="en" className={inconsolata.variable}>
+      <body>{children}</body>
     </html>
   );
 }
