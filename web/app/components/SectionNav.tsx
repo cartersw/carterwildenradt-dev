@@ -1,11 +1,11 @@
 "use client";
 
 import { useRef, type KeyboardEvent } from "react";
-import { SECTIONS, type Section } from "../content/sections";
+import { SECTION_IDS, SECTIONS, type SectionId } from "../content/sections";
 
 type SectionNavProps = {
-  activeSection: Section;
-  onSelect: (section: Section) => void;
+  activeSection: SectionId;
+  onSelect: (section: SectionId) => void;
 };
 
 export function SectionNav({
@@ -22,29 +22,29 @@ export function SectionNav({
 
     switch (event.key) {
       case "ArrowRight":
-        nextIndex = (index + 1) % SECTIONS.length;
+        nextIndex = (index + 1) % SECTION_IDS.length;
         break;
       case "ArrowLeft":
-        nextIndex = (index - 1 + SECTIONS.length) % SECTIONS.length;
+        nextIndex = (index - 1 + SECTION_IDS.length) % SECTION_IDS.length;
         break;
       case "Home":
         nextIndex = 0;
         break;
       case "End":
-        nextIndex = SECTIONS.length - 1;
+        nextIndex = SECTION_IDS.length - 1;
         break;
       default:
         return;
     }
 
     event.preventDefault();
-    onSelect(SECTIONS[nextIndex]);
+    onSelect(SECTION_IDS[nextIndex]);
     tabs.current[nextIndex]?.focus();
   };
 
   return (
     <div role="tablist" aria-label="Portfolio" className="section-tabs">
-      {SECTIONS.map((section, index) => (
+      {SECTION_IDS.map((section, index) => (
         <button
           key={section}
           ref={(element) => {
@@ -60,7 +60,7 @@ export function SectionNav({
           onKeyDown={(event) => handleKeyDown(event, index)}
           className="section-tab"
         >
-          [{section}]
+          {SECTIONS[section].label}
         </button>
       ))}
     </div>

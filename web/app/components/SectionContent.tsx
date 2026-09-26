@@ -1,13 +1,13 @@
 import {
-  SECTION_CONTENT,
-  type Section,
+  SECTIONS,
   type SectionEntry,
+  type SectionId,
 } from "../content/sections";
 
-export function SectionContent({ section }: { section: Section }) {
+export function SectionContent({ section }: { section: SectionId }) {
   return (
     <div className={`section-content section-content-${section}`}>
-      {SECTION_CONTENT[section].map((line) =>
+      {SECTIONS[section].lines.map((line) =>
         "text" in line ? (
           <p key={line.text}>{line.text}</p>
         ) : (

@@ -5,10 +5,10 @@ import { useState } from "react";
 import { SectionNav } from "./components/SectionNav";
 import { SectionContent } from "./components/SectionContent";
 import { NAME } from "./constants/site";
-import { SECTIONS, type Section } from "./content/sections";
+import { SECTION_IDS, type SectionId } from "./content/sections";
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState<Section>("about");
+  const [activeSection, setActiveSection] = useState<SectionId>("about");
 
   return (
     <main className="portfolio">
@@ -34,7 +34,7 @@ export default function Home() {
           onSelect={setActiveSection}
         />
         <div className="section-panels">
-          {SECTIONS.map((section) => (
+          {SECTION_IDS.map((section) => (
             <div
               key={section}
               id={`panel-${section}`}
