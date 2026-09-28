@@ -22,13 +22,16 @@ export const SECTIONS: Record<SectionId, Section> = {
     lines: [
       { text: "Hello my name is Carter, I am a full-stack software developer." },
       {
-        text: "I currently work at a joint venture by Samsung SDI and Stellantis called StarPlus Energy. I'm responsible for analyzing, debugging, and assisting with deploying changes for their MES application.",
+        text: "I currently work at StarPlus Energy, a joint venture between Samsung SDI and Stellantis, where I analyze and debug issues within the MES platform and support the deployment and validation of software changes in a production manufacturing environment.",
       },
       {
-        text: "I enjoy building web apps, video games, and machine-learning projects in my free time. I particularly enjoy designing backend systems and APIs",
+        text: "I build web apps, machine-learning projects, and video games in my free time. I particularly enjoy designing backend systems and APIs.",
       },
       {
-        text: "Outside of development, I enjoy traveling, longboarding, and hiking. ",
+        text: "Outside of development, I enjoy traveling, longboarding, and hiking.",
+      },
+      {
+        text: "I'm always open to new opportunities, feel free to reach out to me via email or LinkedIn if you would like to connect.",
       },
     ],
   },
