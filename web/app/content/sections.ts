@@ -20,7 +20,7 @@ export const SECTIONS: Record<SectionId, Section> = {
   about: {
     label: "About",
     lines: [
-      { text: "Hello my name is Carter, I am a full-stack software developer." },
+      { text: "Hello my name is Carter, I am a full-stack software developer and application specialist." },
       {
         text: "I currently work at StarPlus Energy, a joint venture between Samsung SDI and Stellantis, where I analyze and debug issues within their MES platform and support the deployment and validation of software changes in a production manufacturing ecosystem.",
       },
